@@ -111,7 +111,8 @@ isliteral(::Type{T}) where {T} = x -> x isa T
 is_literal_number(x) = isliteral(Number)(x)
 
 # checking the type directly is faster than dynamic dispatch in type unstable code
-_iszero(x) = x isa Number && iszero(x)
+# _iszero(x) = x isa Number && iszero(x)
+_iszero(x) = x isa Number && (abs(x) < 1e-10)  # small enough tolerance
 _isone(x) = x isa Number && isone(x)
 _isinteger(x) = (x isa Number && isinteger(x)) || (x isa Symbolic && symtype(x) <: Integer)
 _isreal(x) = (x isa Number && isreal(x)) || (x isa Symbolic && symtype(x) <: Real)

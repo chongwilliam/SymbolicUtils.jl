@@ -29,7 +29,8 @@ let
         @ordered_acrule((~x)^(~n) * (~x)^(~m) => (~x)^(~n + ~m))
 
         @ordered_acrule((~z::_isone  * ~x) => ~x)
-        @ordered_acrule((~z::_iszero *  ~x) => ~z)
+        # @ordered_acrule((~z::_iszero *  ~x) => ~z)
+        @ordered_acrule((~z::_iszero *  ~x) => 0)  # edited to give 0 directly
         @rule(*(~x) => ~x)
     ]
 
